@@ -37,7 +37,7 @@ export default function Page() {
           <div className="p-10 flex flex-col justify-center items-center gap-4 h-auto overflow-y-scroll scrollbar-hide">
           
             { newslaters.length > 0 ? newslaters.map((news:any) => (
-              <div className="w-[95%] min-h-[70px] bg-neutral-100 drop-shadow-md rounded-lg flex items-center justify-between pr-5">
+              <div key={news._id} className="w-[95%] min-h-[70px] bg-neutral-100 drop-shadow-md rounded-lg flex items-center justify-between pr-5">
                 <div className="py-4 px-2 flex flex-col gap-2">
                   <p className="text-lg font-medium">{news.email}</p>
                 </div>

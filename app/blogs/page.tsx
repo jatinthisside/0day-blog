@@ -48,6 +48,7 @@ export default function Page() {
                 blogs.length > 0 && blogs.filter((item)=>menu==="All"?true:item.category===menu).map((blog)=>{
                     return <RecentPost
                     id={blog._id}
+                    key={blog._id}
                     img={blog.image}
                     author="Jatin Kumar"
                     date="1 Jan 2024"
