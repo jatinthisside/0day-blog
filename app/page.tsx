@@ -1,19 +1,17 @@
 'use client'
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import {ChevronDown,Dot} from 'lucide-react'
 import Coding from '@/assets/coding.png';
 import VS from '@/assets/vs.png';
 import Html from '@/assets/html.png';
 import Css from '@/assets/css.png';
 import git from '@/assets/git.png';
-import fustrated from '@/assets/blog-header/fustrated.jpg';
+// import fustrated from '@/assets/blog-header/fustrated.jpg';
 import RecentPost from "@/components/blog/RecentPost";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "@/components/Footer";
-import { NextScript } from "next/document";
-
 
 export default function Home() {
  
@@ -104,6 +102,7 @@ export default function Home() {
                return <RecentPost
                img={blog.image}
                id={blog._id}
+               key={blog._id}
                author="Jatin Kumar"
                date="1 Jan 2024"
                title={blog.title}

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios';
 
-export default function page({params}:{params:{blogid:string}}) {
+export default function Page({params}:{params:{blogid:string}}) {
   const [blog,setBlog]=useState({
     image:"",
     title:"",

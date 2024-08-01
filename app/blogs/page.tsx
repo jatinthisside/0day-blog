@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import RecentPost from '@/components/blog/RecentPost'
 import axios from 'axios';
 
-export default function page() {
+export default function Page() {
   const [loader,setLoader] = useState(false);
   const [blogs,setBlogs] = useState([{
     image:"",

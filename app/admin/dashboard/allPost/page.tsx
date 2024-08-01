@@ -11,7 +11,7 @@ interface Blog {
   updatedAt: string;  // Assuming updatedAt is a required field
 }
 
-export default function page() {
+export default function Page() {
   const [blogs,setBlogs]=useState([{
     _id:"",
     title:"",

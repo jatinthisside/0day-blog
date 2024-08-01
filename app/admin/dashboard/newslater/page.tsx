@@ -4,7 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 
 
-export default function page() {
+export default function Page() {
   const [newslaters,setNewslaters]=useState([{
     _id:"",
     email:""
