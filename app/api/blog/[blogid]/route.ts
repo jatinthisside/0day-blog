@@ -4,9 +4,9 @@ import Blog from '@/models/blog.model';
 
 dbConnect();
 
-export async function GET(req:any){
+export async function GET(req:any, { params }: { params: { blogid: string } }){
     try{
-        const id =  req.nextUrl.searchParams.get('id');
+        const id = params.blogid;
         if(!id){
           return Response.json({
              sucess: false,

@@ -15,11 +15,7 @@ export default function Page() {
   const param = useParams()
   const fetchBlog=async()=>{
     console.log("Param -> ",param);
-    const res = await axios.get('/api/blog/getSingleBlog',{
-      params:{
-        id:param.blogid
-      }
-    })
+    const res = await axios.get(`/api/blog/${param.blogid}`)
     console.log(res);
     setBlog(res.data.blog);
   }
