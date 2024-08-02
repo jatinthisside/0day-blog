@@ -1,19 +1,23 @@
-'use client';
+'use client'
 import React, { useEffect, useState } from 'react'
-// import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation';
 import Image from 'next/image'
 import axios from 'axios';
 
-export default function Page({params}:{params:{blogid:string}}) {
+export default function Page() {
+  // const id = params.id;
+  // console.log("Printing id -> ", id);
   const [blog,setBlog]=useState({
     image:"",
     title:"",
     content:""
   });
+  const param = useParams()
   const fetchBlog=async()=>{
+    console.log("Param -> ",param);
     const res = await axios.get('/api/blog/getSingleBlog',{
       params:{
-        id:params.blogid
+        id:param.blogid
       }
     })
     console.log(res);
@@ -30,7 +34,7 @@ export default function Page({params}:{params:{blogid:string}}) {
        <div className="w-[70%] h-full flex flex-col">
           {/* Thmbnail Image */}
           <div className="w-full h-[300px] bg-orange-200">
-            <Image src={`/uploads/${blog.image}`} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
+            <Image src={`/uploads/${blog?.image}`} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
           </div>
           {/* Thmbnail Image */}
           {/* Content */}
