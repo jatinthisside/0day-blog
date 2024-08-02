@@ -1,19 +1,24 @@
 'use client'
-import React, { useState, useRef, useMemo } from 'react';
-import JoditEditor from 'jodit-react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
+// import JoditEditor from 'jodit-react';
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), {
+  ssr: false,
+});
 import axios from 'axios';
 import Link from 'next/link';
 
 export default function TextEditor() {
-  const editor = useRef(null);
-	const [content, setContent] = useState('');
+  const [content, setContent] = useState('');
   const [image, setImage] = useState<any>("");
   const [data,setData] = useState({
     title:"",
     category:"",
   });
+
+  const editor = useRef(null);
   const onChangeHandler =(e:any)=>{
-     setData(prev=>({
+    setData(prev=>({
       ...prev,
       [e.target.name]:e.target.value
      }))
