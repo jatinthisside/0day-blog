@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function Page() {
   // const id = params.id;
   // console.log("Printing id -> ", id);
+  const [loader,setLoader]=useState(true);
   const [blog,setBlog]=useState({
     image:"",
     title:"",
@@ -18,27 +19,33 @@ export default function Page() {
     const res = await axios.get(`/api/blog/${param.blogid}`)
     console.log(res);
     setBlog(res.data.blog);
+    setLoader(false);
   }
   useEffect(()=>{
+    setLoader(true);
     fetchBlog();
   },[])
   useEffect(()=>{
     console.log('Blog-> ',blog);
   },[blog])
   return (
-    <section className="w-[100vw] h-[92vh] flex justify-center">
-       <div className="w-[70%] h-full flex flex-col">
-          {/* Thmbnail Image */}
-          <div className="w-full h-[300px] bg-orange-200">
-            <Image src={`/uploads/${blog?.image}`} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
-          </div>
-          {/* Thmbnail Image */}
-          {/* Content */}
-          <div className="w-full py-6" dangerouslySetInnerHTML={{__html:blog.content}} >
+    <>
+     {
+      !loader ?  <section className="w-[100vw] h-[92vh] flex justify-center">
+      <div className="w-[70%] h-full flex flex-col">
+         {/* Thmbnail Image */}
+         <div className="w-full h-[300px] bg-orange-200">
+           <Image src={`/uploads/${blog?.image}`} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
+         </div>
+         {/* Thmbnail Image */}
+         {/* Content */}
+         <div className="w-full py-6" dangerouslySetInnerHTML={{__html:blog.content}} >
 
-          </div>
-          {/* Content */}
-       </div>
-    </section>
+         </div>
+         {/* Content */}
+      </div>
+   </section> : <div className="w-[100vw] h-[92vh] flex justify-center items-center"><span className="loader"></span></div>
+     }
+    </>
   )
 }

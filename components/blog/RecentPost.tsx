@@ -2,13 +2,16 @@ import React from 'react'
 import {Dot} from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { parseDocument } from 'htmlparser2';
+import { Element, Text } from 'domhandler';
+import { ElementType } from 'domelementtype';
+import render from 'dom-serializer';
 // import img from '../../public/uploads'
 
 export default function RecentPost({id,img,title,desc,author,date,tags,customecss}:any) {
+  
   const router=useRouter();
   console.log(img);
-  const strippedContent = stripHtml(desc);
-  const previewContent = extractPreview(strippedContent, 10);
   const clickHandler=()=>{
      router.push(`/blogs/${id}`);
   }
@@ -36,8 +39,8 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
           <Dot />
           <p>{date}</p>
         </div>
-        <h2 className="font-semibold text-lg text-left self-start">{title}</h2>
-        <div className="text-left text-[12px] text-slate-500" dangerouslySetInnerHTML={{__html:previewContent}}/>
+        <h2 className="font-semibold text-xl text-left self-start">{title}</h2>
+        {/* <div className="text-left text-[12px] text-slate-500" dangerouslySetInnerHTML={{__html:previewContent}}/>  */}
         <div className="flex gap-2 text-[10px]">
           {/* <button className="bg-blue-100 px-2 py-1 rounded-md">Leadership</button>
       <button className="bg-blue-100 px-2 py-1 rounded-md">Management</button> */}
@@ -48,12 +51,14 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
   );
 }
 
-export function stripHtml(html: string) {
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  return doc.body.textContent || " ";
-}
+// export function stripHtml(html: string) {
+//   const doc = new DOMParser().parseFromString(html, 'text/html');
+//   return doc.body.textContent || " ";
+// }
 
-export function extractPreview(content: string, wordCount: number) {
-  const words = content.split(" ");
-  return words.slice(0, wordCount).join(" ") + (words.length > wordCount ? "..." : ". ");
-}
+
+// export function extractPreview(content: string, wordCount: number) {
+//   const words = content.split(" ");
+//   return words.slice(0, wordCount).join(" ") + (words.length > wordCount ? "..." : ". ");
+// }
+

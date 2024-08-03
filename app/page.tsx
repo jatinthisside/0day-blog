@@ -18,7 +18,7 @@ export default function Home() {
   const [newslater,setNewslater] = useState("");
   const [recentBlogs,setRecentBlogs] = useState([{title:"",content:"",category:"",image:"",_id:""}]);
   const [randomBlogs,setRandomBlogs] = useState([{title:"",content:"",category:"",image:"",_id:""}]);
-  const [loader,setLoader] = useState(false);
+  const [loader,setLoader] = useState(true);
   const newslaterHandler=async(e:any)=>{
     e.preventDefault();
     console.log('Button Clicked!');
@@ -96,7 +96,7 @@ export default function Home() {
           </h2>
           <div className="w-5 bg-slate-400 h-[3px]"></div>
         </div>
-        <div className="w-full gap-7 gap-y-8 h-auto flex flex-wrap py-2">
+        <div className="w-full gap-7  h-auto flex flex-wrap py-2">
           {
             recentBlogs.length > 0 && recentBlogs.map((blog)=>{
                return <RecentPost
