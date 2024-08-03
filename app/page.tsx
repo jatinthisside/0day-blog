@@ -115,8 +115,8 @@ export default function Home() {
         </div>
       </section>
       {/* Top Blogs */}
-      <section className="gap-6 w-[80%] font-inter text-center lg:h-[90vh] h-[50vh]  mx-auto flex flex-col py-[3rem]">
-        <div className="flex flex-col gap-[3px]">
+      <section className="gap-6 w-[80%] font-inter text-center lg:h-[90vh] h-[53vh]  mx-auto flex flex-col">
+        <div className="flex flex-col gap-[3px] h-auto">
           <h2 className="font-semibold text-2xl self-start">Most Popular</h2>
           <div className="w-5 bg-slate-400 h-[3px]"></div>
         </div>
