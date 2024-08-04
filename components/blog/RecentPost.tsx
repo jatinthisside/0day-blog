@@ -18,7 +18,7 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
   return (
     <div
       onClick={clickHandler}
-      className={`card w-[350px] h-[400px] rounded-md flex flex-col gap-3 shadow-2xl shadow-blue-500/20 hover:shadow-[5px_5px_0px_0px_rgba(65,105,125)] ${customecss}`}
+      className={`card w-[350px] py-5 rounded-md flex flex-col gap-3 shadow-2xl shadow-blue-500/20 hover:shadow-[5px_5px_0px_0px_rgba(65,105,125)] ${customecss}`}
     >
       {
         img ? <div className="w-full h-[200px]">

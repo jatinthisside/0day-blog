@@ -31,10 +31,10 @@ export default function Page() {
     <>
       {
         !loader ? (
-          <section className='w-[100vw] h-[92vh] flex justify-center overflow-hidden'>
+          <section className='w-[100vw] min-h-[92vh] flex justify-center overflow-hidden'>
       {/* Outer div for filter and conatiner */}
-      <div className='w-[80vw] h-[100%] flex flex-col gap-1 items-center pt-5 overflow-hidden mb-2'>
-          <ul className='flex gap-3 flex-wrap h-[8%] justify-center'>
+      <div className='md:w-[80vw] w-[90%] h-[100%] flex flex-col gap-1 items-center pt-5 overflow-hidden mb-2'>
+          <ul className='flex gap-3 flex-wrap md:h-[8%] h-[15%] justify-center'>
             <li className='text-base bg-neutral-800 rounded-md cursor-pointer hover:bg-neutral-700 transition-all duration-300 hover:text-orange-50 text-white w-[80px] flex justify-center items-center h-[30px]' onClick={(e)=>setMenu('All')}>All</li>
             <li className='text-base bg-neutral-800 rounded-md cursor-pointer hover:bg-neutral-700 transition-all duration-300 hover:text-orange-50 text-white w-[80px] flex justify-center items-center h-[30px]' onClick={(e)=>setMenu('Css')}>Css</li>
             <li className='text-base bg-neutral-800 rounded-md cursor-pointer hover:bg-neutral-700 transition-all duration-300 hover:text-orange-50 text-white w-[80px] flex justify-center items-center h-[30px]' onClick={(e)=>setMenu('Startup')}>Startup</li>
@@ -43,7 +43,7 @@ export default function Page() {
             <li className='text-base bg-neutral-800 rounded-md cursor-pointer hover:bg-neutral-700 transition-all duration-300 hover:text-orange-50 text-white w-[80px] flex justify-center items-center h-[30px]' onClick={(e)=>setMenu('Webdev')}>WebDev</li>
           </ul>
           {/* Content container */}
-          <div className='w-full max-h-[90%] flex-wrap mt-3 overflow-x-scroll flex gap-6 py-4 px-8 no-scrollbar'>
+          <div className='w-full h-auto flex-wrap mt-3 overflow-x-scroll flex gap-6 py-4 px-8 no-scrollbar'>
              {
                 blogs.length > 0 && blogs.filter((item)=>menu==="All"?true:item.category===menu).map((blog)=>{
                     return <RecentPost

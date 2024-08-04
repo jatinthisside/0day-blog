@@ -29,9 +29,9 @@ export default function page() {
   }
 
   return (
-    <section className='w-[100vw] lg:h-[92vh] h-[75vh] flex flex-col gap-3 justify-center items-center'>
+    <section className='w-[100vw] h-[92vh] flex flex-col gap-3 justify-center items-center'>
         <h1 className='text-center font-semibold text-4xl overflow-hidden'>Got Questions?</h1>
-        <p className='text-center'>Lets Talk! fill the form below or email us with your query.</p>
+        <p className='text-center px-5'>Lets Talk! fill the form below or email us with your query.</p>
         <form action="" onSubmit={handleSubmit} className='lg:w-[50%] w-[75%] drop-shadow-lg bg-neutral-200 flex flex-col gap-3 p-3 rounded-md'>
             <input name="name" type="text" placeholder="Enter Your Name..."  className="px-3 py-2 rounded-md border-[2px] border-neutral-300"/>
             <input name="email" type="email" placeholder="Enter Your Email..."  className="px-3 py-2 rounded-md border-[2px] border-neutral-300"/>

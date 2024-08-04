@@ -14,7 +14,7 @@ export default function Navbar() {
     <div className="w-[100%]  flex items-center justify-center border border-b-[1px] border-slate-400 py-3 transition-all duration-300 z-40 bg-white">
       <div className="w-[80%] flex items-center justify-between mx-auto">
          {/* Logo */}
-         <div className='md:w-[20%] w-[35%]'>
+         <div className='md:w-[20%] w-[43%]'>
          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 XeroDay
               </span>

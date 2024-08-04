@@ -53,7 +53,7 @@ export default function Home() {
     { !loader ?(
       <main className="w-screen min-h-screen">
       {/* Header */}
-      <section className="gap-6 w-[80%] font-inter text-center md:h-screen h-[70vh] mx-auto flex flex-col justify-center items-center relative lg:bottom-10">
+      <section className="gap-6 w-[80%] font-inter text-center md:h-screen h-[80vh] mx-auto flex flex-col justify-center items-center relative lg:bottom-10 md:py-0 sm:py-5">
         {/* imges */}
         <Image src={Coding} alt="img" className="md:w-[199px] w-[120px]" />
         <Image
@@ -77,7 +77,7 @@ export default function Home() {
           className="icons w-[50px] absolute top-[20%] left-[25%] rotate-12 lg:flex hidden"
         />
         {/* imges */}
-        <h2 className="md:text-[3rem] text-[2.3rem] font-bold overflow-hidden lg:w-[50%] sm:w-[80%] leading-[3.5rem]">
+        <h2 className="md:text-[3rem] text-[2.3rem] font-bold overflow-hidden lg:w-[50%] sm:w-[80%] md:leading-[3.5rem] leading-[2.2rem]">
           Your Coding Journey Starts Here
         </h2>
         <p className="md:w-[65%] w-[79%]">
@@ -115,12 +115,12 @@ export default function Home() {
         </div>
       </section>
       {/* Top Blogs */}
-      <section className="gap-6 w-[80%] font-inter text-center lg:h-[90vh] h-[53vh]  mx-auto flex flex-col">
+      <section className="gap-6 md:mb-0 mb-8 w-[80%] font-inter text-center lg:h-[90vh] min-h-[55vh] h-auto  mx-auto flex flex-col md:py-0 sm:py-1">
         <div className="flex flex-col gap-[3px] h-auto">
-          <h2 className="font-semibold text-2xl self-start">Most Popular</h2>
+          <h2 className="font-semibold text-2xl self-start">Random Blogs</h2>
           <div className="w-5 bg-slate-400 h-[3px]"></div>
         </div>
-        <div className="gap-7 p-2 w-full h-auto flex overflow-x-auto no-scrollbar [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%) ">
+        <div className="gap-5 p-2 w-full h-auto flex overflow-x-auto no-scrollbar [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%) ">
           {randomBlogs.length > 0 && randomBlogs.map((item, index) => (
             <RecentPost
               key={index}
