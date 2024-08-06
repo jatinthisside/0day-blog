@@ -30,6 +30,7 @@ export default function TextEditor() {
       alert("All Fields are required!");
       return;
     }
+    console.log("To Check if Validation Working or Not 👍");
     const formData = new FormData();
     formData.append('title',data.title);
     formData.append('category',data.category);
