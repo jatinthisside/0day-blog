@@ -1,12 +1,14 @@
-'use client'
-import React, { useState } from 'react';
+"use client"
+import React from 'react';
 
 export default function page() {
 	async function handleSubmit(event: any) {
     event.preventDefault();
+    console.log('SEcret -> ',process.env.NEXT_PUBLIC_SECRET);
+
     const formData = new FormData(event.target);
 
-    formData.append("access_key",String(process.env.SECRET));
+    formData.append("access_key",String(process.env.NEXT_PUBLIC_SECRET));
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
