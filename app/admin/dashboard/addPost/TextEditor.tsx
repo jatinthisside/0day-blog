@@ -37,15 +37,19 @@ export default function TextEditor() {
     formData.append('content',content);
     formData.append('image',image);
     console.log('Formdata -> ',formData);
-    const res = await axios.post("/api/blog",formData);
-    console.log(res.data.data);
-    const BlogData = {
-      title: res.data.data.title,
-      category: res.data.data.category,
-      content: res.data.data.content,
-      image: res.data.data.image,
-      createdAt:res.data.data.createdAt,
+    try{
+      const res = await axios.post("/api/blog",formData);
+      console.log("API Response:", res.data);
+    }catch(e:any){
+      console.error("Error creating blog:",e.message);
     }
+    // const BlogData = {
+    //   title: res.data.data.title,
+    //   category: res.data.data.category,
+    //   content: res.data.data.content,
+    //   image: res.data.data.image,
+    //   createdAt:res.data.data.createdAt,
+    // }
     alert("Res Send!!!");
     setData({
       title:"",
