@@ -25,6 +25,7 @@ export default function TextEditor() {
   }
   const onSubmitHandler =async(e:any)=>{
     e.preventDefault();
+    console.log('Data -> ',{...data,content,image});
     if(data.title==""||data.category==""||image==""||content==""){
       alert("All Fields are required!");
       return;
@@ -34,6 +35,7 @@ export default function TextEditor() {
     formData.append('category',data.category);
     formData.append('content',content);
     formData.append('image',image);
+    console.log('Formdata -> ',formData);
     const res = await axios.post("/api/blog",formData);
     console.log(res.data.data);
     const BlogData = {
