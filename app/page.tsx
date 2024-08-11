@@ -43,6 +43,10 @@ export default function Home() {
       getBlogs();
   },[])
 
+  useEffect(()=>{
+     console.log("recentBlogs : ",recentBlogs);
+     console.log("randomBlogs : ",randomBlogs);
+  },[recentBlogs || randomBlogs])
   
   return (
     <>
