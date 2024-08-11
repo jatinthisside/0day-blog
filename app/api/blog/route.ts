@@ -33,11 +33,13 @@ dbConnect();
 
  export async function POST(req:any){
     try{
+    console.log("Ready To Create New Blog!");    
     const formData = await req.formData();
     const image = formData.get("image") as File;
     const title = formData.get("title");
     const content = formData.get("content");
     const category = formData.get("category");
+    console.log("FormData Got -> ",formData);
     if(!image || !title || !content || !category){
         return NextResponse.json({
             success:false,
@@ -48,8 +50,9 @@ dbConnect();
     if (!image) {
         return NextResponse.json({ error: "No files received." }, { status: 400 });
     }
-
+    console.log("Just Before Cloudinary Image Responce !");
     const uploadResponse = await uploadImage(image,'next/blogs');
+    console.log("Cloudinary Image Responce -> ",uploadResponse);
 
     console.log("Image saved to cloudinary");
 
@@ -60,6 +63,8 @@ dbConnect();
         image:uploadResponse.secure_url,
         public_id:uploadResponse.public_id
       })
+
+      console.log("Responce to Db Generated!");
 
     //   console.log("Responce -> ",res);
     return NextResponse.json({
