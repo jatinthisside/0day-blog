@@ -40,6 +40,7 @@ export default function Home() {
   }
 
   useEffect(()=>{
+      console.log("Fetch Operation is going to perform>>>>");
       getBlogs();
   },[])
 
