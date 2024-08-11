@@ -32,6 +32,7 @@ export default function Home() {
 
   const getBlogs=async()=>{
     setLoader(true);
+    console.log("Fetch Operation is going to perform>>>>");
     const result = await axios.get('/api/blog/getBlogs');
     // console.log(result.data);
     setRandomBlogs(result.data.randomBlogs);
@@ -40,14 +41,13 @@ export default function Home() {
   }
 
   useEffect(()=>{
-      console.log("Fetch Operation is going to perform>>>>");
       getBlogs();
   },[])
 
   useEffect(()=>{
      console.log("recentBlogs : ",recentBlogs);
      console.log("randomBlogs : ",randomBlogs);
-  },[recentBlogs || randomBlogs])
+  },[recentBlogs])
   
   return (
     <>

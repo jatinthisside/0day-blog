@@ -14,8 +14,8 @@ export async function GET(){
             message:"Unable to get posts!"
         })
     }
-    // console.log("Recent Blogs -> ",recentBlogs);
-    // console.log("Random Blogs -> ",randomBlogs);
+    console.log("Recent Blogs -> ",recentBlogs);
+    console.log("Random Blogs -> ",randomBlogs);
     return Response.json({
         sucess: true,
         message:"All Blogs Fetched Successfully!",
