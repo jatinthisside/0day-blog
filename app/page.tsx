@@ -22,7 +22,7 @@ export default function Home() {
   const newslaterHandler=async(e:any)=>{
     e.preventDefault();
     console.log('Button Clicked!');
-    console.log(newslater);
+    // console.log(newslater);
     const formData = new FormData();
     formData.append('email',newslater);
     await axios.post('/api/newslater',formData);
@@ -31,23 +31,19 @@ export default function Home() {
   }
 
   const getBlogs=async()=>{
+    setLoader(true);
     const result = await axios.get('/api/blog/getBlogs');
-    console.log(result.data);
+    // console.log(result.data);
     setRandomBlogs(result.data.randomBlogs);
     setRecentBlogs(result.data.recentBlogs);
     setLoader(false);
   }
 
   useEffect(()=>{
-    setLoader(true);
       getBlogs();
   },[])
 
-  useEffect(()=>{
-    console.log('Blogs are available !');
-    console.log('recent --> ',recentBlogs);
-    console.log('random -->', randomBlogs);
-  },[randomBlogs,recentBlogs])
+  
   return (
     <>
     { !loader ?(
@@ -89,7 +85,7 @@ export default function Home() {
         </button>
       </section>
       {/* Recent Blogs */}
-      <section className="gap-6 w-[80%] font-inter text-center min-h-screen mx-auto flex flex-col py-[3.5rem]">
+      <section className="gap-6 w-[80%] font-inter text-center min-h-[48vh] mx-auto flex flex-col py-[3.5rem]">
         <div className="flex flex-col gap-[3px]">
           <h2 className="font-semibold text-2xl self-start">
             Recent blog posts
@@ -115,7 +111,7 @@ export default function Home() {
         </div>
       </section>
       {/* Top Blogs */}
-      <section className="gap-6 md:mb-0 mb-8 w-[80%] font-inter text-center lg:h-[90vh] min-h-[55vh] h-auto  mx-auto flex flex-col md:py-0 sm:py-1">
+      <section className=" gap-6 w-[80%] font-inter text-center min-h-[40vh] lg:h-auto sm:h-[40vh]  mx-auto flex flex-col md:py-0 sm:py-1 lg:mb-5 md:mb-0 mb-5">
         <div className="flex flex-col gap-[3px] h-auto">
           <h2 className="font-semibold text-2xl self-start">Random Blogs</h2>
           <div className="w-5 bg-slate-400 h-[3px]"></div>

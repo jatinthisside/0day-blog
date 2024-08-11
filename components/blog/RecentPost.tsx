@@ -2,11 +2,6 @@ import React from 'react'
 import {Dot} from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { parseDocument } from 'htmlparser2';
-import { Element, Text } from 'domhandler';
-import { ElementType } from 'domelementtype';
-import render from 'dom-serializer';
-// import img from '../../public/uploads'
 
 export default function RecentPost({id,img,title,desc,author,date,tags,customecss}:any) {
   
@@ -15,6 +10,7 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
   const clickHandler=()=>{
      router.push(`/blogs/${id}`);
   }
+
   return (
     <div
       onClick={clickHandler}
@@ -23,7 +19,7 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
       {
         img ? <div className="w-full h-[200px]">
           <Image
-            src={`/uploads/${img}`}
+            src={img}
             alt="blogImg"
             className="w-full h-full"
             style={{ objectFit: "cover" }}
@@ -51,14 +47,4 @@ export default function RecentPost({id,img,title,desc,author,date,tags,customecs
   );
 }
 
-// export function stripHtml(html: string) {
-//   const doc = new DOMParser().parseFromString(html, 'text/html');
-//   return doc.body.textContent || " ";
-// }
-
-
-// export function extractPreview(content: string, wordCount: number) {
-//   const words = content.split(" ");
-//   return words.slice(0, wordCount).join(" ") + (words.length > wordCount ? "..." : ". ");
-// }
 

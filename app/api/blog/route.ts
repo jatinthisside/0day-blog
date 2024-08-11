@@ -1,10 +1,8 @@
 import {dbConnect} from '@/config/db';
 import { NextResponse } from 'next/server';
-import path from "path";
-import { writeFile,unlink } from "fs/promises";
-import type { NextApiRequest, NextApiResponse } from 'next';
 import Blog from '@/models/blog.model';
-import mongoose from 'mongoose';
+import {uploadImage} from '@/config/upload-image';
+import { deleteImage } from '@/config/delete-image';
 
 dbConnect();
 
@@ -17,7 +15,7 @@ dbConnect();
             message:"Unable to get posts!"
         })
     }
-    console.log(response);
+    // console.log(response);
     return Response.json({
         sucess: true,
         message:"All Blogs Fetched Successfully!",
@@ -36,7 +34,7 @@ dbConnect();
  export async function POST(req:any){
     try{
     const formData = await req.formData();
-    const image = formData.get("image");
+    const image = formData.get("image") as File;
     const title = formData.get("title");
     const content = formData.get("content");
     const category = formData.get("category");
@@ -50,21 +48,20 @@ dbConnect();
     if (!image) {
         return NextResponse.json({ error: "No files received." }, { status: 400 });
     }
-    const buffer = Buffer.from(await image.arrayBuffer());
-    const filename = Date.now() + image.name.replaceAll(" ", "_");
-    console.log(filename);
-    await writeFile(
-        path.join(process.cwd(), "/public/uploads/" + filename),
-        buffer
-      );
-      const ImageUrl = filename;
+
+    const uploadResponse = await uploadImage(image,'next/blogs');
+
+    console.log("Image saved to cloudinary");
+
       const res = await Blog.create({
         title:title,
         content:content,
         category:category,
-        image:ImageUrl
+        image:uploadResponse.secure_url,
+        public_id:uploadResponse.public_id
       })
-      console.log(res);
+
+    //   console.log("Responce -> ",res);
     return NextResponse.json({
         success: true,
         message:"Succesfully created Post!",
@@ -84,13 +81,9 @@ dbConnect();
 
  export async function DELETE(req:any){
     const id =  req.nextUrl.searchParams.get('id');
-    // const objId = new mongoose.Types.ObjectId(id);
-    console.log('Printing id -> ',id);
     try{
         const blog = await Blog.findById(id);
-        console.log("Printing Blog -> ", blog);
-        console.log('blog image -> ',blog.image);
-        unlink(`./public/uploads/${blog.image}`);
+        await deleteImage(blog.public_id);
         console.log("error nhi aya..");
         await Blog.findByIdAndDelete(id);
     }catch(err:any){

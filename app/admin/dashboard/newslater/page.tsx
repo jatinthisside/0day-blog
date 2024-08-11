@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
-
 
 export default function Page() {
   const [newslaters,setNewslaters]=useState([{
@@ -11,16 +9,13 @@ export default function Page() {
   }]);
   const fetchNewslaters=async()=>{
      const res = await axios.get('/api/newslater');
-     console.log(res.data.newslaters);
+    //  console.log(res.data.newslaters);
      setNewslaters(res.data.newslaters);
   }
   useEffect(()=>{
     fetchNewslaters();
   },[])
-  useEffect(()=>{
-    console.log("Changes in newslaters -> ",newslaters);
-  },[newslaters])
-
+ 
   const deleteHandler=async(id:any)=>{
      await axios.delete('/api/newslater',{
        params:{id:id}

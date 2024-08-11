@@ -6,9 +6,9 @@ import Link from 'next/link';
 export default function Navbar() {
   const [menu,setMenu] = useState(false);
   function toggleMenu(){
-    console.log("before --> ",menu);
+    // console.log("before --> ",menu);
     setMenu(!menu);
-    console.log("after --> ",menu);
+    // console.log("after --> ",menu);
   }
   return (
     <div className="w-[100%]  flex items-center justify-center border border-b-[1px] border-slate-400 py-3 transition-all duration-300 z-40 bg-white">

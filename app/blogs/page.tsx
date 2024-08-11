@@ -1,5 +1,4 @@
 'use client'
-import { Ultra } from 'next/font/google'
 import React, { useEffect, useState } from 'react'
 import RecentPost from '@/components/blog/RecentPost'
 import axios from 'axios';
@@ -15,17 +14,13 @@ export default function Page() {
   }]);
   const [menu,setMenu] = useState('All')
   const fetchBlogs=async()=>{
+    setLoader(true);
     const result = await axios.get('/api/blog');
-    // console.log(result);
-    // alert("Blogs fetched successfully");
     setBlogs(result.data.blogs);
     setLoader(false);
   }
   useEffect(()=>{
-    setLoader(true);
-    setTimeout(()=>{
       fetchBlogs();
-    },1000)
   },[])
   return (
     <>

@@ -8,8 +8,8 @@ export async function POST(req:any){
    try{
     const formData = await req.formData();
     const email = formData.get('email');
-    console.log("Done...");
-    console.log(email);
+    // console.log("Done...");
+    // console.log(email);
     if(!email){
      return NextResponse.json({
          success:false,
@@ -17,7 +17,7 @@ export async function POST(req:any){
      })
     }
     const responce = await Newslater.create({email:email});
-    console.log(responce);
+    // console.log(responce);
     return NextResponse.json({
       success:true,
       message:"Newslater Subscribed!",

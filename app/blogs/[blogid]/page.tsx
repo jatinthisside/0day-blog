@@ -5,8 +5,6 @@ import Image from 'next/image'
 import axios from 'axios';
 
 export default function Page() {
-  // const id = params.id;
-  // console.log("Printing id -> ", id);
   const [loader,setLoader]=useState(true);
   const [blog,setBlog]=useState({
     image:"",
@@ -15,9 +13,9 @@ export default function Page() {
   });
   const param = useParams()
   const fetchBlog=async()=>{
-    console.log("Param -> ",param);
+    // console.log("Param -> ",param);
     const res = await axios.get(`/api/blog/${param.blogid}`)
-    console.log(res);
+    // console.log(res);
     setBlog(res.data.blog);
     setLoader(false);
   }
@@ -25,9 +23,7 @@ export default function Page() {
     setLoader(true);
     fetchBlog();
   },[])
-  useEffect(()=>{
-    console.log('Blog-> ',blog);
-  },[blog])
+  
   return (
     <>
      {
@@ -35,7 +31,7 @@ export default function Page() {
       <div className="w-[70%] h-full flex flex-col">
          {/* Thmbnail Image */}
          <div className="w-full h-[300px] bg-orange-200">
-           <Image src={`/uploads/${blog?.image}`} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
+           <Image src={blog?.image} alt="Thumbnail" width={500} height={200} objectFit='contain' className="w-full h-full"/>
          </div>
          {/* Thmbnail Image */}
          {/* Content */}

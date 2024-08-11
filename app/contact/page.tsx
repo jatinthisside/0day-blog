@@ -4,15 +4,10 @@ import React from 'react';
 export default function page() {
 	async function handleSubmit(event: any) {
     event.preventDefault();
-    console.log('SEcret -> ',process.env.NEXT_PUBLIC_SECRET);
-
     const formData = new FormData(event.target);
-
     formData.append("access_key",String(process.env.NEXT_PUBLIC_SECRET));
-
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
-
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -22,12 +17,12 @@ export default function page() {
       body: json,
     });
     const result = await response.json();
-    if (result.success) {
-      console.log(result);
-    }
-	event.name="";
-	event.email="";
-	event.message="";
+    // if (result.success) {
+    //   console.log(result);
+    // }
+	  event.name="";
+ 	  event.email="";
+	  event.message="";
   }
 
   return (

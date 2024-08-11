@@ -1,15 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
-
-interface Blog {
-  _id: string;
-  title: string;
-  category: string;
-  content: string;
-  updatedAt: string;  // Assuming updatedAt is a required field
-}
 
 export default function Page() {
   const [blogs,setBlogs]=useState([{
@@ -21,16 +12,13 @@ export default function Page() {
   }]);
   const fetchBlogs=async()=>{
      const res = await axios.get('/api/blog');
-     console.log(res.data.blogs);
+    //  console.log(res.data.blogs);
      setBlogs(res.data.blogs);
   }
   useEffect(()=>{
     fetchBlogs();
   },[])
-  useEffect(()=>{
-    console.log("Changes in blogs state -> ",blogs);
-  },[blogs])
-
+ 
   const deleteHandler=async(id:any)=>{
      await axios.delete('/api/blog',{
        params:{id:id}
